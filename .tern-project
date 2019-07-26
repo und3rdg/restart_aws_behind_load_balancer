@@ -1,0 +1,11 @@
+ {
+   "libs": [
+      "ecma5",
+      "ecma6"
+   ],
+   "plugins": {
+      "es_modules": {},
+     "doc_comment": null,
+     "node": {}
+   }
+ }
