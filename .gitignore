@@ -5,4 +5,5 @@ Session.vim
 
 node_modules/
 
-credentials.js
+instances.json
+
