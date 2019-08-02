@@ -44,15 +44,27 @@ def filtered():
             out.append(o)
     return out
 
-pp(filtered())
+# pp(filtered())
 
 
 
-def reboot(el):
+def reboot(InstanceId):
     run_command([
         set['aws'],
         set['service'],
         'reboot-instances',
-        'instance-ids=',
-        el['InstanceId']
-        ])
+        '--instance-ids=' + InstanceId,
+        # '--dry-run',
+    ])
+
+def user_interaction(filtered) :
+    pp(filtered)
+    print()
+    for el in filtered:
+        answer = input("restart " + el['PublicIpAddress'] + "? (y/N): ").lower()
+        if answer[:1] == 'y':
+            reboot(el['InstanceId'])
+            print('done: ' + el['PublicIpAddress'])
+
+user_interaction(filtered())
+
