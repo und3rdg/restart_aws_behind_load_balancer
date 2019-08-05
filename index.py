@@ -8,21 +8,21 @@ pp = pprint.PrettyPrinter(depth=6).pprint
 set = {
         'aws': 'aws',
         'service': 'ec2',
-        'only_tag': 'production'
+        'only_tag': 'production',
+        'profile': 'wk',
         }
 
 def run_command(command):
-    print('\nRunning: ' + command[0] + ' ' + command[1] + ' ' + command[2] + "\n" + '...')
-    res = subprocess.run(command, stdout=subprocess.PIPE)
+    print('\nRunning: ' + command[0] + "\n" + '...')
+    res = subprocess.run(command, env=dict(AWS_PROFILE='wk'), stdout=subprocess.PIPE)
     print('Done!')
     return res.stdout
-
 
 instances = json.loads(run_command(
     [
     set['aws'],
     set['service'],
-    'describe-instances'
+    'describe-instances',
     ]
     ))['Reservations']
 
@@ -44,7 +44,6 @@ def filtered():
             out.append(o)
     return out
 
-# pp(filtered())
 
 
 
