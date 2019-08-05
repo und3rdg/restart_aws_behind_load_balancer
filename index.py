@@ -1,8 +1,9 @@
 #!/usr/bin/python3
+import sys
+sys.path.append('lib')
 import subprocess
 import json
 import pprint
-
 pp = pprint.PrettyPrinter(depth=6).pprint
 
 set = {
