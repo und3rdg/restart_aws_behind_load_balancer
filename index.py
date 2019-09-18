@@ -61,7 +61,7 @@ def user_interaction(filtered) :
     pp(filtered)
     print()
     for el in filtered:
-        answer = input("restart " + el['PublicIpAddress'] + "? (y/N): ").lower()
+        answer = input("restart http://" + el['PublicIpAddress'] + " ? (y/N): ").lower()
         if answer[:1] == 'y':
             reboot(el['InstanceId'])
             print('done: ' + el['PublicIpAddress'])
